@@ -56,10 +56,10 @@ public struct JSONWebToken {
                 }
             }
             set {
-                if newValue == nil || newValue is NSNull {
-                    jsonPayload.removeValue(forKey: key)
-                } else {
+                if let newValue = newValue {
                     jsonPayload[key] = newValue
+                } else {
+                    jsonPayload.removeValue(forKey: key)
                 }
             }
         }
